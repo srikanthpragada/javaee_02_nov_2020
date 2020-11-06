@@ -16,7 +16,6 @@ public class BatchProcessDemo {
 			stmt.addBatch("update employees set salary=salary + 25000 where salary <= 500000");
 			// Add another command to batch 
 			stmt.addBatch("update employees set salary=salary + 50000 where salary > 500000");
-			
 			int[] uc = stmt.executeBatch();// execute batch of commands 
 			con.commit();
 			for (int i = 0; i < uc.length; i++) {
