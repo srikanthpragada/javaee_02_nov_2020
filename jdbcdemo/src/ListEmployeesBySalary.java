@@ -19,7 +19,7 @@ class SalaryPredicate implements Predicate {
 	@Override
 	public boolean evaluate(RowSet rs) {
 		try {
-			System.out.println(rs.getInt("salary"));
+			// System.out.println(rs.getInt("salary"));
 			return rs.getInt("salary") > this.salary;
 		} catch (Exception ex) {
 			return false;
