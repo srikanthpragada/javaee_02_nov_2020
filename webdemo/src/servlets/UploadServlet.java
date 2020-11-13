@@ -29,19 +29,21 @@ public class UploadServlet extends HttpServlet {
 			InputStream is = p1.getInputStream();
 			TreeSet<String> mobiles = new TreeSet<>();
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-			out.println("<h2>Mobile Numbers </h2>");
-			out.println("<ul>");
 			while (true) {
 				String line = br.readLine();
 				if (line == null) // EOF
 					break;
 				mobiles.add(line);
 			}
+			
+			out.println("<h2>Mobile Numbers </h2>");
+			out.println("<ul>");
 
 			for (String number : mobiles)
 				out.println("<li>" + number + "</li>");
 
 			out.println("</ul>");
+			
 		} catch (Exception ex) {
 			System.out.println("Error -> " + ex.getMessage());
 		}

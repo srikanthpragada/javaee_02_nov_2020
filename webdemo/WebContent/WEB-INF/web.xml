@@ -10,7 +10,7 @@
      <servlet-class>servlets.ConfigServlet</servlet-class>
      <init-param>
          <param-name>message</param-name>
-         <param-value>If you are not failing, you are not growing!</param-value>
+         <param-value>Srikanth Technologies</param-value>
      </init-param>
   </servlet>
   

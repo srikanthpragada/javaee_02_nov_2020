@@ -27,13 +27,16 @@ public class UploadPhotoServlet extends HttpServlet {
 			Part p1 = request.getPart("photo");
 			InputStream is = p1.getInputStream();
 			// Create a file with same name in Server's /photos folder
-		    String filename = p1.getSubmittedFileName();
-		    String target_filename = ctx.getRealPath("/photos/" + filename);
-		    System.out.println(target_filename);
-		    FileOutputStream fos = new FileOutputStream(target_filename);
-		    fos.write(is.readAllBytes());		    	
-		    out.println("<h3>Uploaded Successfully!</h3>");
+			String filename = p1.getSubmittedFileName();
+			System.out.println(filename);
+			String target_filename = ctx.getRealPath("/photos/" + filename);
+			System.out.println(target_filename);
+			FileOutputStream fos = new FileOutputStream(target_filename);
+			fos.write(is.readAllBytes());
+			fos.close();
+			out.println("<h3>Uploaded Successfully!</h3>");
 		} catch (Exception ex) {
+			out.println("Sorry! Could not save photo due to error!");
 			System.out.println("Error -> " + ex.getMessage());
 		}
 	}
