@@ -4,16 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Create Cookie</title>
+<title>EL Demo</title>
 </head>
 <body>
 
-<%
-   Cookie c = new Cookie("city","Sydney");
-   c.setMaxAge(7 * 24 * 60 * 60);  // Seconds
-   response.addCookie(c);
-   out.println("Cookie Created");
-%>
 
 </body>
 </html>

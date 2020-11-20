@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Create Cookie</title>
+<title>Save Name</title>
 </head>
 <body>
 
 <%
-   Cookie c = new Cookie("city","Sydney");
+   Cookie c = new Cookie("fullname", request.getParameter("fullname"));
    c.setMaxAge(7 * 24 * 60 * 60);  // Seconds
    response.addCookie(c);
-   out.println("Cookie Created");
+   response.sendRedirect("showname.jsp");
 %>
 
 </body>
