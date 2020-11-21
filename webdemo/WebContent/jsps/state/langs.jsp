@@ -9,6 +9,7 @@
 <body>
 	<%
     String name = request.getParameter("lang");
+	// Get langs attribute from session 
 	Object value = session.getAttribute("langs");
 	ArrayList<String> langs = null;
 	if (value == null)

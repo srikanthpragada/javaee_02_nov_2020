@@ -18,4 +18,8 @@
      <servlet-name>config</servlet-name>
      <url-pattern>/config</url-pattern>
   </servlet-mapping>
+
+  <session-config>
+      <session-timeout>5</session-timeout>
+  </session-config>
 </web-app>
