@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Languages</title>
 </head>
-<body>
+<body> 
 	<%
     String name = request.getParameter("lang");
 	// Get langs attribute from session 
