@@ -4,8 +4,8 @@
 
 <h1>Employees By Job</h1>
 <form>
-	Job <input type="text" name="jobid" value="${param.jobid}" /> <input
-		type="submit" value="Employees" />
+	Job <input type="text" name="jobid" value="${param.jobid}" /> 
+	<input type="submit" value="Employees" />
 </form>
 
 
@@ -17,7 +17,7 @@
       select *
       from employees
       where job = ?
-      <sql:param value="${param.jobid}" />
+         <sql:param value="${param.jobid}" />
 	</sql:query>
 
 
@@ -33,6 +33,5 @@
 			</ul>
 		</c:otherwise>
 	</c:choose>
-
 
 </c:if>

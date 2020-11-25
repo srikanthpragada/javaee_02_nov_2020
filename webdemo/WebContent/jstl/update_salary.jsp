@@ -13,11 +13,11 @@
 <body>
 	<h1>Update Employee Salary</h1>
 	<form>
-		Employee Id <br /> <input type="number" required name="id"
-			value="${param.id}" />
+		Employee Id <br /> 
+		<input type="number" required name="id" value="${param.id}" />
 		<p></p>
-		New Salary <br /> <input type="number" required name="salary"
-			value="${param.salary}" />
+		New Salary <br /> 
+		<input type="number" required name="salary"	value="${param.salary}" />
 		<p></p>
 		<input type="submit" value="Update" />
 	</form>
@@ -30,9 +30,9 @@
 				url="jdbc:mysql://localhost:3306/hr" user="root" password="mysql" />
 
 			<sql:update dataSource="${mysql}" var="uc">
- 			update employees set salary = ? where id = ?
-            <sql:param value="${param.salary}" />
-				<sql:param value="${param.id}" />
+ 			  update employees set salary = ? where id = ?
+                  <sql:param value="${param.salary}" />
+				  <sql:param value="${param.id}" />
 			</sql:update>
 			<c:choose>
 				<c:when test="${uc == 1}">
