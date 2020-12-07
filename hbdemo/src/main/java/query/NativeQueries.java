@@ -12,15 +12,15 @@ import org.hibernate.type.StandardBasicTypes;
 @Entity
 class JobCount {
 	@Id
-	private String id;
+	private String job;
 	private int count;
 
-	public String getId() {
-		return id;
+	public String getJob() {
+		return job;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setJob(String job) {
+		this.job = job;
 	}
 
 	public int getCount() {
@@ -37,7 +37,7 @@ public class NativeQueries {
 	public static void main(String[] args) throws Exception {
 		Configuration c = new Configuration();
 		c.configure("query/hibernate.cfg.xml");
-		// c.addAnnotatedClass(JobCount.class);
+		c.addAnnotatedClass(JobCount.class);
 		Session session = c.buildSessionFactory().openSession();
 
 		List result = session.createSQLQuery("select upper(title), round(minsal,-4) from jobs").list();
@@ -53,23 +53,14 @@ public class NativeQueries {
 			System.out.println(j.getTitle());
 		}
 		
-		/*
-		 * List summary = session.
-		 * createSQLQuery("select job_id, count(*) count from employees group by job_id"
-		 * ) .addScalar("job_id", StandardBasicTypes.STRING).addScalar("count",
-		 * StandardBasicTypes.INTEGER).list();
-		 * 
-		 * for (Object row : summary) { Object cols[] = (Object[]) row;
-		 * System.out.printf("%-10s %3d\n", cols[0], cols[1]); }
-		 * 
-		 * List<JobCount> jobCounts = session
-		 * .createSQLQuery("select job_id id, count(*) count from employees group by job_id"
-		 * ) .addEntity(JobCount.class).getResultList();
-		 * 
-		 * for (JobCount job : jobCounts) { System.out.printf("%-10s %3d\n",
-		 * job.getId(), job.getCount()); }
-		 * 
-		 */
+		List<JobCount> jobCounts = session
+				 .createSQLQuery("select job, count(*) count from employees group by job")
+  	             .addEntity(JobCount.class).getResultList();
+		
+		for (JobCount job : jobCounts) { 
+			 System.out.printf("%-10s %3d\n",  job.getJob(), job.getCount()); 
+	    }
+				 
 	}
 
 }

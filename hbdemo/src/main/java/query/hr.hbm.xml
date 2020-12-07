@@ -22,9 +22,13 @@
 			<one-to-many class="query.Employee" />
 		</set>
 	</class>
-	
+	<!--  Named Queries -->
 	<query name="costlyEmployees">
            <![CDATA[ from Employee where salary > :salary ]]>
+    </query>
+    
+    <query name="importantEmployees">
+           <![CDATA[select id, name, job.title, salary from Employee where salary > :salary ]]>
     </query>
 
 </hibernate-mapping>
