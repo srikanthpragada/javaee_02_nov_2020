@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
 @Primary
 @Lazy
+@Scope(scopeName = "prototype")
 public class PythonBooks implements Books {
 
 	public PythonBooks() {

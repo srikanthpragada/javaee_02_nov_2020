@@ -1,17 +1,30 @@
 package books;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class Catalog {
-	@Autowired 
+	// @Autowired
 	// @Qualifier("pythonBooks")
 	Books books;
 
-	public Catalog() {
+	// Constructor Injection
+	public Catalog(Books books) {
 		System.out.println("Catalog()");
+		this.books = books;
+	}
+
+	@PostConstruct
+	public void init() {
+		System.out.println("init() in Catalog");
+	}
+
+	@PreDestroy
+	public void clearAll() {
+		System.out.println("clearAll() in Catalog");
 	}
 
 	public void print() {

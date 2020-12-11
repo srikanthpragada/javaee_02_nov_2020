@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Test implements CommandLineRunner {
 
 	@Autowired
-	Catalog catalog;
+	CatalogWithSetter catalog;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Test.class, args);
