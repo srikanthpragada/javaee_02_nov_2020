@@ -13,7 +13,8 @@ public class Test implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println(order.getClass()); // Proxy, target is Order
 		order.placeOrder();
-		// order.cancelOrder();
+//		order.cancelOrder();
+//		order.getOrderStatus(1);
 	}
 
 	public static void main(String[] args) {
