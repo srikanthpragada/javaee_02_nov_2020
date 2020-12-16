@@ -65,30 +65,30 @@ public class JobsManager {
 		System.out.println("No. of rows updated : " + count);
 	}
 
-//	@Transactional(propagation = Propagation.REQUIRED)
-//	public void updateTwo(int e1, int e2) {
-//		TransactionStatus status = TransactionAspectSupport.currentTransactionStatus();
-//		System.out.println("Transaction Begins");
-//
-//		int count = jdbcTemplate.update("update employees set salary = salary + 1000 where id = ?", e1);
-//		if (count == 0) {
-//			// throw new RuntimeException();
-//			status.setRollbackOnly();
-//			return;
-//		}
-//
-//		System.out.println("First Update Done");
-//
-//		count = jdbcTemplate.update("update employees set salary = salary + 2000 where id = ?", e2);
-//		if (count == 0)
-//			status.setRollbackOnly();
-//		else
-//			System.out.println("Second update done!");
-//		
-//		
-//		System.out.println("New Transaction : " + status.isNewTransaction());
-//		System.out.println("Rollback ? " + status.isRollbackOnly());
-//		System.out.println("Function Done!");
-//	}
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void updateTwo(int e1, int e2) {
+		TransactionStatus status = TransactionAspectSupport.currentTransactionStatus();
+		System.out.println("Transaction Begins");
+
+		int count = jdbcTemplate.update("update employees set salary = salary + 1000 where id = ?", e1);
+		if (count == 0) {
+			// throw new RuntimeException();
+			status.setRollbackOnly();
+			return;
+		}
+
+		System.out.println("First Update Done");
+
+		count = jdbcTemplate.update("update employees set salary = salary + 2000 where id = ?", e2);
+		if (count == 0)
+			status.setRollbackOnly();
+		else
+			System.out.println("Second update done!");
+		
+		
+		System.out.println("New Transaction : " + status.isNewTransaction());
+		System.out.println("Rollback ? " + status.isRollbackOnly());
+		System.out.println("Function Done!");
+	}
 
 }

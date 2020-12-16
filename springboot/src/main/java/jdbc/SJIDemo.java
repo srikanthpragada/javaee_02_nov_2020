@@ -14,15 +14,16 @@ public class SJIDemo {
     // Constructor injection 
 	public SJIDemo(DataSource datasource) {
 		this.sji = new SimpleJdbcInsert(datasource);
-		String [] columns =  {"id","title","minsal"};
-		this.sji.withTableName("jobs").usingColumns(columns);
+		String [] columns =  {"id","title","minsal"};  // Specify columns to be used 
+		this.sji.usingColumns(columns);
+		this.sji.withTableName("jobs");
 		 
 	}
 
 	public void add() {
 		HashMap<String, Object> job = new HashMap<>();
-		job.put("id", "AD");   // Column name and value 
-		job.put("title", "Angular Developer");
+		job.put("id", "RD");   // Column name and value 
+		job.put("title", "React Developer");
 		job.put("minsal",1000000);
 		int count = sji.execute(job);  // INSERT is executed 
 		System.out.printf("\nInserted %d row(s)\n",  count);

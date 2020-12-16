@@ -21,18 +21,18 @@ public class TestJDBC implements CommandLineRunner {
 		// jobs.updateMinSalary();
 		// jobs.listJobsWithLambda();
 		// jobs.showAverageSalary();
-		sjiDemo.add();
+		// sjiDemo.add();
 
 //		jobs.listJobTitles();
 //		jobs.listJobTitlesWithJava7();
 
-//		try {
-//			System.out.println("Updating salaries!");
-//			jobs.updateTwo(1,12);
-//			System.out.println("Operation Completed!");
-//		} catch (Exception ex) {
-//			System.out.println("Operation Failed");
-//		}
+		try {
+			System.out.println("Updating salaries!");
+			jobs.updateTwo(1,11);
+			System.out.println("Operation Completed!");
+		} catch (Exception ex) {
+			System.out.println("Operation Failed");
+		}
 	}
 
 }
