@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>AJAX Demo</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+    function getQuote()
+    {
+       $.get("/quote",null, showQuote);	
+    }
+    
+    function showQuote(quote) {
+       $("#quote").html(quote)
+    }
+    
+    function getEmployeeName()
+    {
+       $.get("/employeename", {"id" : $("#empid").val() }, showEmployeeName);	
+    }
+    
+    function showEmployeeName(name) {
+    	$("#empname").html("")  // clear 
+    	if (name == "") {
+    		alert("Employee Id Not Found")
+    	}
+    	else
+            $("#empname").html(name)
+    }
+    
+    function updateSalary() {
+    	 $.get("/updateSalary", {"id" : $("#empid").val(), "salary" : $("#salary").val() }, 
+    			   showUpdateResult);	
+    }
+   
+    
+</script>
+
+</head>
+<body>
+    <h1>AJAX Demo</h1>
+    <h2 id="quote"></h2>
+    <button onclick="getQuote()">Get Quote</button>
+    
+    <hr/>
+    <h2>Update Salary</h2>
+    Employee Id <br/>
+    <input type="text" id="empid" onblur="getEmployeeName()"/>
+    <span id="empname"></span>
+    <p/>
+    New Salary <br/>
+    <input type="number" id="salary"/>
+    <p/>
+    <button onclick="updateSalary()">Update</button>
+
+</body>
+</html>

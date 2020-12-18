@@ -1,4 +1,4 @@
-package com.st.springbootmvc;
+package basics;
 
 import java.time.LocalDateTime;
 
@@ -27,6 +27,7 @@ public class HelloController {
 
 		if (user == null)
 			user = "Guest";
+		
 		model.put("message", msg + " " + user);
 		return "greet"; // View Name i.e. it will be /greet.jsp
 	}
