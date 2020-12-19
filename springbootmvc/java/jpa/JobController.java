@@ -32,7 +32,7 @@ public class JobController {
 	@RequestMapping(value = "/addjob", method = RequestMethod.POST)
 	public String addJob(Job job, ModelMap model) {
 		jobRepo.save(job);
-		job = new Job();  
+		// job = new Job();  
 		model.addAttribute("job", job);
 		model.addAttribute("message", "Job has been added!");
 		return "addjob";
@@ -44,7 +44,7 @@ public class JobController {
 		if (job.isPresent())
 		   jobRepo.delete(job.get());
 		
-		return "redirect:jobs";
+		return "redirect:jobs";  // Redirect to URL jobs
 	}
 
 }
