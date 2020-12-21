@@ -9,7 +9,7 @@
 
     function getQuote()
     {
-       $.get("/quote",null, showQuote);	
+       $.get("/quote",null, showQuote);	// AJAX call 
     }
     
     function showQuote(quote) {
@@ -24,7 +24,7 @@
     function showEmployeeName(name) {
     	$("#empname").html("")  // clear 
     	if (name == "") {
-    		alert("Employee Id Not Found")
+    		$("#empname").html("Employee Id Not Found")
     	}
     	else
             $("#empname").html(name)
