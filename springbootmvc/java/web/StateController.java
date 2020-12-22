@@ -39,7 +39,7 @@ public class StateController {
 		session.setAttribute("now", LocalDate.now().toString());
 		
 		ServletContext ctx = session.getServletContext();
-		ctx.setAttribute("name", "Spring MVC Demo");
+		ctx.setAttribute("name", "Spring MVC Demo"); // Application scope variable 
 		
 		return  "showSession"; 
 	}

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -67,7 +68,7 @@ public class RestJobController {
 	}
 
 	@PutMapping("/{id}") // For Http PUT request
-	public Job updateDept(@PathVariable("id") String id, Job newJob) {
+	public Job updateJobWithPut(@PathVariable("id") String id, Job newJob) {
 		Optional<Job> job = jobRepo.findById(id);
 		if (job.isPresent()) {
 			try {
@@ -84,4 +85,22 @@ public class RestJobController {
 		}
 	}
 
+ 
+	@PatchMapping("/{id}")
+	public Job updateJobWithPatch(@PathVariable("id") String id, Job newJob) {
+		Optional<Job> job = jobRepo.findById(id);
+		if (job.isPresent()) {
+			try {
+				Job dbJob = job.get();
+				dbJob.setTitle(newJob.getTitle());
+				jobRepo.save(dbJob); // Update
+				return dbJob;
+			} catch (Exception ex) {
+				System.out.println("Error  " + ex);
+				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR); // 500
+			}
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Job Id Not Found!");
+		}
+	}
 }
